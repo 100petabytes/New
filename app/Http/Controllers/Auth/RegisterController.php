@@ -77,13 +77,15 @@ class RegisterController extends Controller
     }
 
 
-// public function store(){
-//
-//          // $newuserEmail = User::create($this ->validatedData());
-//
-//         Mail::to($User->['email'])-> send(new NewUserRegistered());
-//
-// }
+public function email(){
+
+         // $newuserEmail = User::create($this ->validatedData());
+
+        Mail::to(Auth::user()->email)-> send(new NewUserRegistered());
+
+}
+
+// Auth::user()->name
 
 
 

@@ -23,8 +23,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::get('/email', function () {
-//
-//   Mail::to('awrjofbnijarbnfjanbrfjawnbrjbnr@email.com')-> send(new NewUserRegistered());
-//     return new NewUserRegistered;
-// });
+Route::get('/email', function () {
+
+  Mail::to('awrjofbnijarbnfjanbrfjawnbrjbnr@email.com')-> send(new NewUserRegistered());
+    return new NewUserRegistered;
+});
