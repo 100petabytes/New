@@ -140,7 +140,7 @@ top: 10em;
                     <p><strong>Milan 25min</strong> - Working on some biology</p><br />
                     <p><strong>Milan 25min</strong> - Working on some biology</p>
                     <br />
-                      <p><strong>Milan 25min</strong> - Working on some biology</p>
+                      <p><strong>Milann 25min</strong> - Working on some biology</p>
                       <br />
                         <p><strong>Mila 25min</strong> - Working on some biology</p>
                         <br />
