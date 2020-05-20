@@ -77,19 +77,5 @@ class RegisterController extends Controller
     }
 
 
-public function email(){
-
-         // $newuserEmail = User::create($this ->validatedData());
-
-        Mail::to(Auth::user()->email)-> send(new NewUserRegistered());
-
-}
-
-// Auth::user()->name
-
-
-
-
-
 
 }

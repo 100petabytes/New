@@ -22,9 +22,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+// Mail::to($data()->email)-> send(new NewUserRegistered());
 
-Route::get('/email', function () {
-
-  Mail::to('awrjofbnijarbnfjanbrfjawnbrjbnr@email.com')-> send(new NewUserRegistered());
-    return new NewUserRegistered;
-});
+// Route::get('/email', function () {
+//
+//     return new NewUserRegistered;
+// });

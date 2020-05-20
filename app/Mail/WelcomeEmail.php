@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NewUserRegistered extends Mailable
+class WelcomeEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,6 +28,6 @@ class NewUserRegistered extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.user-registered');
+        return $this->view('view.name');
     }
 }
