@@ -1,10 +1,12 @@
 @component('mail::message')
-# Introduction
+# Welcome to the Community!
 
-The body of your message.
+We all just wanted to let you know that you are a valued member of our work space. <br />
+<br />
+Go ahead and get something amazsing acomplished!
 
 @component('mail::button', ['url' => ''])
-Button Text
+Go to your Dashboard
 @endcomponent
 
 Thanks,<br>
