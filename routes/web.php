@@ -25,6 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Route::get('/email', function () {
 //
-//   Mail::to('email@email.com')-> send(new NewUserRegistered());
+//   Mail::to('awrjofbnijarbnfjanbrfjawnbrjbnr@email.com')-> send(new NewUserRegistered());
 //     return new NewUserRegistered;
 // });
