@@ -13,3 +13,10 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+
+mix.js([
+   'public/js/jquery-3.5.1.min.js',
+   'public/js/jquery.validate.min.js',
+   'public/js/user-task.js',
+], 'public/js/app.js');

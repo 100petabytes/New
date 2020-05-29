@@ -22,6 +22,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/create-task', 'HomeController@createTask')->name('home');
+Route::get('/task-list', 'HomeController@taskList')->name('home');
+Route::post('/add-task', 'TaskController@add')->name('home');
+Route::post('/delete-task', 'TaskController@delete')->name('home');
+Route::post('/update-task', 'TaskController@updateTask')->name('home');
+
 // Mail::to($data()->email)-> send(new NewUserRegistered());
 
 // Route::get('/email', function () {
