@@ -401,6 +401,7 @@
                 },
                 stop: function (event, ui) {
                     ui.helper.removeClass("draggable");
+                    ui.helper.removeClass("dropped");
                 }
             });
             
