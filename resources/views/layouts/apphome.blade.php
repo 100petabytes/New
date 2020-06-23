@@ -64,11 +64,11 @@
         }
 
         /* Safari 7.1+ */
-        _::-webkit-full-page-media,
+/*        _::-webkit-full-page-media,
         _:future,
         :root .dropdown-menu {
-            /* right: 95px; */
-        }
+            right: 95px;
+        }*/
 
         .list_boxes_content {
             padding: 12px;
