@@ -22,6 +22,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/create-task', 'HomeController@createTask')->name('home');
+Route::get('/task-list', 'HomeController@taskList')->name('home');
+Route::post('/add-task', 'TaskController@add')->name('home');
+Route::post('/delete-task', 'TaskController@delete')->name('home');
+Route::post('/update-task', 'TaskController@updateTask')->name('home');
+Route::post('/update-timer', 'HomeController@updateTime')->name('home');
+
+Route::get('/get-time-analytics', 'TaskController@getAvgTime')->name('home');
+
+Route::get('/get-customer', 'SubscriptionController@getCustomer')->name('home');
+Route::post('/subscribe', 'SubscriptionController@subscribe')->name('home');
+Route::get('/getintent', 'HomeController@getIntent')->name('home');
+Route::get('/subscriptions', 'SubscriptionController@subscriptions')->name('home');
+
 // Mail::to($data()->email)-> send(new NewUserRegistered());
 
 // Route::get('/email', function () {

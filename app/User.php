@@ -5,13 +5,17 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 
 use App\Events\Illuminate\Mail\Events\UserRegisteredEvent;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Billable;
 
+    protected $address = 'this is tes address';
+    
     /**
      * The attributes that are mass assignable.
      *
