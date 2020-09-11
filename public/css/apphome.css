@@ -10105,3 +10105,51 @@ span#loader.hide {
 #subscriptions .active {
     background-color:#ffffff38;
 }
+
+/* CSS BY SH => 08-09-2020 */
+.top-10-users-box {
+    border: 1.5px solid white;
+    background: #0000005e;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 !important;
+}
+.top-10-users-box h4 {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1.5px solid white;
+    background: #0000004d;
+    padding: 10px;
+    color: #fff;
+    font-size: 18px;
+    margin: 0;
+}
+.top-10-users-box ul {
+    list-style-type: none;
+    padding: 5px;
+    width: 100%;
+    margin: 0;
+}
+.top-10-users-box ul li:first-child{
+    border-bottom: #fff 1px solid;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.top-10-users-box ul li {
+
+}
+.top-10-users-box ul li strong {
+    color: #fff;
+    font-size: 20px;
+    margin: 0;
+    font-weight: 600;
+}
+.top-10-users-box ul li span {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+}
+
+
+
+

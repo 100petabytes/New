@@ -76,6 +76,10 @@ class HomeController extends Controller
         $userObj = new User;
         $this->view['intent'] = $user->find($userId)->createSetupIntent();
         
+        // Get Online Users Count
+        $onlineUsersCount = $this->getOnlineUsersCount();
+        $this->view['online_users_count'] = $onlineUsersCount;
+        
         Stripe::setApiKey(env( 'STRIPE_SECRET_KEY' ) );
         //get plan price 
         $product = Plan::retrieve( env( 'STRIPE_PRODUCT_ID' ) );
@@ -183,8 +187,16 @@ class HomeController extends Controller
         $task_list = $taskListResp['data'];
         // $this->view['task_list'] = $task_list;
         
+        $onlineUsersCount = $this->getOnlineUsersCount();
+
         // $taskDetails = getOnlineUserTasksDB::select('select task.task_name,task.minutes, users.name from task left join users on users.id = task.user_id');
-        return response()->json(array('res'=>$task_list,'msg'=>"success"));
+        return response()->json(
+                                array(
+                                        'res'=>$task_list,
+                                        'msg'=>"success",
+                                        'online_users_count' => $onlineUsersCount
+                                    )
+                            );
         //return view('stud_view',['users'=>$users]);
     }
 
@@ -257,5 +269,14 @@ class HomeController extends Controller
         $intent = User::find(Auth::User()->id)->createSetupIntent();
         return response()->json(['intent'=>$intent->client_secret]);
     }
+
+    public function getOnlineUsersCount(){
+        // 
+        $onlineUsersCount = 0;
+        $users = User::where('is_login', '=', 1)->get();
+        $onlineUsersCount = $users->count();
+        // 
+        return $onlineUsersCount;
+}
 
 }

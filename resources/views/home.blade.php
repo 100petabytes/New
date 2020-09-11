@@ -64,6 +64,7 @@
   .logout-div{
         right: 20px;
     }
+    .online-users-count-cont .fa{ font-size: 12px; color: #00FF00; }
 </style>
 
 
@@ -108,9 +109,11 @@
       <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
         <div class="insidebox">
           <div class="box">
-            <h3>54,036
-              <!--<img src="/img/pros.png" height="20px" width="20px"/>-->
+            <h3 class="online-users-count-cont">
+              <i class="fa fa-circle"></i>
+              <span id="onlineUsersCount">{{ $online_users_count }}</span>
             </h3>
+              <!--<img src="/img/pros.png" height="20px" width="20px"/>-->
           </div>
           <div class="Working_tm_list" id="rightBox">
             <?php foreach ($task_list as $val) { ?>
@@ -235,7 +238,9 @@
           'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
         },
         success: function(data) {
+          // 
           if (data.msg == "success") {
+            //
             var html = "";
             jQuery.each(data.res, function(key, val) {
                 var className = '';
@@ -246,12 +251,20 @@
             });
             //console.log(html);
             jQuery("#rightBox").html(html);
+            
+            // Show online_users_count
+            var online_users_count = data.online_users_count;
+            $("#onlineUsersCount").html(online_users_count);
+
           }
+
         }
       });
     }
-    setInterval(sendRequest, 60000);
+    // Set Time Interval
+    setInterval(sendRequest, 30000);
   });
+
 
   /* Used to display timer */
   var countdown;

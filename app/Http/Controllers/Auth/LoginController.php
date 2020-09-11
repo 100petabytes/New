@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\User;
+
+use Auth;
 
 class LoginController extends Controller
 {
@@ -37,4 +41,29 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function authenticated(Request $request, $user)
+    {
+        // Update last login date
+        $user->is_login = 1;
+        $user->save();
+}
+
+    public function logout(Request $request)
+    {
+        // 
+        $userId = Auth::id();
+        // Update last login date
+        $user = User::findOrFail($userId);
+        $user->is_login = 0;
+        $user->save();
+        
+        // logout user
+        $this->guard()->logout();
+        // invalidate session
+        $request->session()->invalidate();
+        // Redirect to login page
+        return $this->loggedOut($request) ?: redirect('/login');
+    }
+
 }

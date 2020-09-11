@@ -360,11 +360,11 @@
                     <div class="dropdown">
                         <div class="dropbtn"></div>
                         <img src="/img/best.png" height="55px" width="55px" />
-                        <div class="dropdown-content">
-                            <h1> Top 10 in the last 24 hrs</h1>
-                            <p>
-
-                            </p>
+                        <div class="dropdown-content Analytics">
+                            <h1>Top 10 in the last 24 hrs</h1>
+                            <div class="row top-10-users-box">
+                                <ul id="top10Users"></ul>
+                            </div>
 
                         </div>
                     </div>
@@ -543,6 +543,54 @@
                         $('#in-7days').text(response.data.time7);
                         $('#in-30days').text(response.data.time30);
                         $('#in-total').text(response.data.alltime);
+                    }
+                }
+            });
+
+            // get-top-10-tasks
+            jQuery.ajax({
+                url: 'get-top-10-tasks',
+                dataType: 'json',
+                success: function(response) {
+                    var status = response.status;
+                    if (status == 1) {
+                        var data = response.data;
+                        var htmlList = '';
+
+                        htmlList += '<li>';
+                            htmlList += '<div class="row">';
+                                htmlList += '<div class="col-md-2 text-center">';
+                                    htmlList += '<strong>Sr. No</strong>';
+                                htmlList += '</div>';
+                                htmlList += '<div class="col-md-6 text-center">';
+                                    htmlList += '<strong>Name</strong>';
+                                htmlList += '</div>';
+                                htmlList += '<div class="col-md-4 text-center">';
+                                    htmlList += '<strong>Last 24 Hrs</strong>';
+                                htmlList += '</div>';
+                            htmlList += '</div>';
+                        htmlList += '</li>';
+
+                        $.each(data, function(key, val) {
+                            var sr_no = (key + 1);
+                            var user_id = val.user_id;
+                            var user_name = val.user_name;
+                            var total_minutes = val.total_minutes;
+                            htmlList += '<li>';
+                                htmlList += '<div class="row">';
+                                    htmlList += '<div class="col-md-2 text-center">';
+                                        htmlList += '<span>'+sr_no+'</span>';
+                                    htmlList += '</div>';
+                                    htmlList += '<div class="col-md-6 text-center">';
+                                        htmlList += '<span>'+user_name+'</span>';
+                                    htmlList += '</div>';
+                                    htmlList += '<div class="col-md-4 text-center">';
+                                        htmlList += '<span>'+total_minutes+' mins</span>';
+                                    htmlList += '</div>';
+                                htmlList += '</div>';
+                            htmlList += '</li>';
+                        });
+                        $("#top10Users").html(htmlList);
                     }
                 }
             });

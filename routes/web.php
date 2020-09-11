@@ -30,6 +30,7 @@ Route::post('/update-task', 'TaskController@updateTask')->name('home');
 Route::post('/update-timer', 'HomeController@updateTime')->name('home');
 
 Route::get('/get-time-analytics', 'TaskController@getAvgTime')->name('home');
+Route::get('/get-top-10-tasks', 'TaskController@getTop10Task')->name('home');
 
 Route::get('/get-customer', 'SubscriptionController@getCustomer')->name('home');
 Route::post('/subscribe', 'SubscriptionController@subscribe')->name('home');
