@@ -236,11 +236,14 @@ class TaskController extends Controller
 
             // Get Top 10 Users Who worked maximum time
             $task = DB::table('task')
-                ->select('user_id', DB::raw('SUM(minutes) AS total_minutes'), DB::raw('users.name AS user_name'))
+                ->select('user_id',
+                    DB::raw("SEC_TO_TIME( SUM( TIME_TO_SEC( completed_time ) ) ) as total_time_24"),
+                    DB::raw('users.name AS user_name')
+                )
                 ->join('users', 'task.user_id', '=', 'users.id')
                 ->whereBetween('task.created_at', [$startDateTime, $endDateTime])
                 ->groupBy('task.user_id','users.name')
-                ->orderBY('total_minutes', 'DESC')
+                ->orderBY('total_time_24', 'DESC')
                 ->limit(10)
                 ->get();
 

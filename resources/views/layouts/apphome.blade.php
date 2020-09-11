@@ -556,6 +556,7 @@
                     if (status == 1) {
                         var data = response.data;
                         var htmlList = '';
+                        if(data != ''){
 
                         htmlList += '<li>';
                             htmlList += '<div class="row">';
@@ -566,7 +567,7 @@
                                     htmlList += '<strong>Name</strong>';
                                 htmlList += '</div>';
                                 htmlList += '<div class="col-md-4 text-center">';
-                                    htmlList += '<strong>Last 24 Hrs</strong>';
+                                        htmlList += '<strong>Completed Time</strong>';
                                 htmlList += '</div>';
                             htmlList += '</div>';
                         htmlList += '</li>';
@@ -575,7 +576,7 @@
                             var sr_no = (key + 1);
                             var user_id = val.user_id;
                             var user_name = val.user_name;
-                            var total_minutes = val.total_minutes;
+                                var total_time_24 = val.total_time_24;
                             htmlList += '<li>';
                                 htmlList += '<div class="row">';
                                     htmlList += '<div class="col-md-2 text-center">';
@@ -585,13 +586,17 @@
                                         htmlList += '<span>'+user_name+'</span>';
                                     htmlList += '</div>';
                                     htmlList += '<div class="col-md-4 text-center">';
-                                        htmlList += '<span>'+total_minutes+' mins</span>';
+                                            htmlList += '<span>'+total_time_24+'</span>';
                                     htmlList += '</div>';
                                 htmlList += '</div>';
                             htmlList += '</li>';
                         });
                         $("#top10Users").html(htmlList);
+                        } else {
+                            // 
+                            $("#top10Users").html('<h4 class="text-center">No User(s) Available</h4>');
                     }
+                }
                 }
             });
 
