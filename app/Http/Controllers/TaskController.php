@@ -249,3 +249,17 @@ class TaskController extends Controller
                 $message = 'Analitic report';
                 $arrJson['data']    = $task;
 }
+
+        }catch(Exception $e){
+            $status = 0;
+            $message = $ex->getMessage();
+        }
+
+        $arrJson['status']  = $status;
+        $arrJson['message'] = $message;
+        
+        return response()->json($arrJson);
+
+    }
+     
+}
