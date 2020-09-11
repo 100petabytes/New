@@ -213,4 +213,39 @@ class TaskController extends Controller
 
     }
      
+    // 
+    public function getTop10Task()
+    {        
+        $status     = 0;
+        $message    = '';
+        $arrData    = [];
+        $arrJson    = [];
+        
+        try{
+
+            //
+            $userId = auth()->user()->id;
+            // 
+            $startDTObj = new \DateTime('now');
+            $startDateTime = $startDTObj->format('Y-m-d H:i:s');
+            // 
+            $dateObj = new \DateTime($startDateTime);
+            $endDateTime = $dateObj->format('Y-m-d H:i:s');
+            $dateObj->modify('-24 hours');
+            $startDateTime = $dateObj->format('Y-m-d H:i:s');
+
+            // Get Top 10 Users Who worked maximum time
+            $task = DB::table('task')
+                ->select('user_id', DB::raw('SUM(minutes) AS total_minutes'), DB::raw('users.name AS user_name'))
+                ->join('users', 'task.user_id', '=', 'users.id')
+                ->whereBetween('task.created_at', [$startDateTime, $endDateTime])
+                ->groupBy('task.user_id','users.name')
+                ->orderBY('total_minutes', 'DESC')
+                ->limit(10)
+                ->get();
+
+            if(!empty($task)){
+                $status = 1;
+                $message = 'Analitic report';
+                $arrJson['data']    = $task;
 }
